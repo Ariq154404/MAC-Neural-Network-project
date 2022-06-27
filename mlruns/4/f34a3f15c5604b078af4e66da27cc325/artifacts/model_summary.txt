@@ -1,0 +1,109 @@
+Model: "graph_neuralnetwork"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_18 (InputLayer)          [(None, 9, 12, 3)]   0           []                               
+                                                                                                  
+ tf.compat.v1.transpose_16 (TFO  (3, None, 9, 12)    0           ['input_18[0][0]']               
+ pLambda)                                                                                         
+                                                                                                  
+ tf.__operators__.getitem_156 (  (None, 9, 12)       0           ['tf.compat.v1.transpose_16[0][0]
+ SlicingOpLambda)                                                ']                               
+                                                                                                  
+ tf.__operators__.getitem_160 (  (None, 9, 12)       0           ['tf.compat.v1.transpose_16[0][0]
+ SlicingOpLambda)                                                ']                               
+                                                                                                  
+ tf.__operators__.getitem_164 (  (None, 9, 12)       0           ['tf.compat.v1.transpose_16[0][0]
+ SlicingOpLambda)                                                ']                               
+                                                                                                  
+ tf.__operators__.getitem_157 (  (None, 9, 12)       0           ['tf.__operators__.getitem_156[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_161 (  (None, 9, 12)       0           ['tf.__operators__.getitem_160[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_165 (  (None, 9, 12)       0           ['tf.__operators__.getitem_164[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_158 (  (None, 9, 12)       0           ['tf.__operators__.getitem_157[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_162 (  (None, 9, 12)       0           ['tf.__operators__.getitem_161[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_166 (  (None, 9, 12)       0           ['tf.__operators__.getitem_165[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_159 (  (None, 9, 12)       0           ['tf.__operators__.getitem_158[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_163 (  (None, 9, 12)       0           ['tf.__operators__.getitem_162[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ tf.__operators__.getitem_167 (  (None, 9, 12)       0           ['tf.__operators__.getitem_166[0]
+ SlicingOpLambda)                                                [0]']                            
+                                                                                                  
+ flatten_33 (Flatten)           (None, 108)          0           ['tf.__operators__.getitem_159[0]
+                                                                 [0]']                            
+                                                                                                  
+ flatten_34 (Flatten)           (None, 108)          0           ['tf.__operators__.getitem_163[0]
+                                                                 [0]']                            
+                                                                                                  
+ flatten_35 (Flatten)           (None, 108)          0           ['tf.__operators__.getitem_167[0]
+                                                                 [0]']                            
+                                                                                                  
+ gcn_51 (GCN)                   (None, 108)          34992       ['flatten_33[0][0]']             
+                                                                                                  
+ gcn_53 (GCN)                   (None, 108)          34992       ['flatten_34[0][0]']             
+                                                                                                  
+ gcn_55 (GCN)                   (None, 108)          34992       ['flatten_35[0][0]']             
+                                                                                                  
+ graph_layerr1 (Activation)     (None, 108)          0           ['gcn_51[0][0]']                 
+                                                                                                  
+ graph_layerg1 (Activation)     (None, 108)          0           ['gcn_53[0][0]']                 
+                                                                                                  
+ graph_layerb1 (Activation)     (None, 108)          0           ['gcn_55[0][0]']                 
+                                                                                                  
+ gcn_52 (GCN)                   (None, 108)          34992       ['graph_layerr1[0][0]']          
+                                                                                                  
+ gcn_54 (GCN)                   (None, 108)          34992       ['graph_layerg1[0][0]']          
+                                                                                                  
+ gcn_56 (GCN)                   (None, 108)          34992       ['graph_layerb1[0][0]']          
+                                                                                                  
+ graph_layerr2 (Activation)     (None, 108)          0           ['gcn_52[0][0]']                 
+                                                                                                  
+ graph_layerg2 (Activation)     (None, 108)          0           ['gcn_54[0][0]']                 
+                                                                                                  
+ graph_layerb2 (Activation)     (None, 108)          0           ['gcn_56[0][0]']                 
+                                                                                                  
+ batch_normalization_24 (BatchN  (None, 108)         432         ['graph_layerr2[0][0]']          
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_25 (BatchN  (None, 108)         432         ['graph_layerg2[0][0]']          
+ ormalization)                                                                                    
+                                                                                                  
+ batch_normalization_26 (BatchN  (None, 108)         432         ['graph_layerb2[0][0]']          
+ ormalization)                                                                                    
+                                                                                                  
+ tf.stack_8 (TFOpLambda)        (3, None, 108)       0           ['batch_normalization_24[0][0]', 
+                                                                  'batch_normalization_25[0][0]', 
+                                                                  'batch_normalization_26[0][0]'] 
+                                                                                                  
+ tf.compat.v1.transpose_17 (TFO  (None, 108, 3)      0           ['tf.stack_8[0][0]']             
+ pLambda)                                                                                         
+                                                                                                  
+ denseshrink (Dense)            (None, 108, 1)       4           ['tf.compat.v1.transpose_17[0][0]
+                                                                 ']                               
+                                                                                                  
+ tf.compat.v1.squeeze_8 (TFOpLa  (None, 108)         0           ['denseshrink[0][0]']            
+ mbda)                                                                                            
+                                                                                                  
+ dense1 (Dense)                 (None, 32)           3488        ['tf.compat.v1.squeeze_8[0][0]'] 
+                                                                                                  
+ out_layer (Dense)              (None, 7)            231         ['dense1[0][0]']                 
+                                                                                                  
+==================================================================================================
+Total params: 214,971
+Trainable params: 214,323
+Non-trainable params: 648
+__________________________________________________________________________________________________
