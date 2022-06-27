@@ -1,0 +1,30 @@
+Model: "graph_neuralnetwork"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ input_1 (InputLayer)        [(None, 9, 12)]           0         
+                                                                 
+ flatten (Flatten)           (None, 108)               0         
+                                                                 
+ gcn (GCN)                   (None, 108)               34992     
+                                                                 
+ graph_layer1 (Activation)   (None, 108)               0         
+                                                                 
+ gcn_1 (GCN)                 (None, 108)               34992     
+                                                                 
+ graph_layer2 (Activation)   (None, 108)               0         
+                                                                 
+ batch_normalization (BatchN  (None, 108)              432       
+ ormalization)                                                   
+                                                                 
+ dense0 (Dense)              (None, 64)                6976      
+                                                                 
+ dense1 (Dense)              (None, 64)                4160      
+                                                                 
+ out_layer (Dense)           (None, 7)                 455       
+                                                                 
+=================================================================
+Total params: 82,007
+Trainable params: 81,791
+Non-trainable params: 216
+_________________________________________________________________
