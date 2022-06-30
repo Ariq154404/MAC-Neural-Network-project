@@ -1,4 +1,8 @@
 /env
-/data/balanced_image
+/data
 /model
+/mlruns
+hyperparamtune.ipynb
+builf-train.ipynb
+
 mlflow.db
